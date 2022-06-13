@@ -16,7 +16,7 @@
 // raylib includes here
 #include "raylib.h"
 // project includes here
-
+#include "AppStage.hpp"
 // c/c++ includes here
 #include <string>  // for strings
 #include <iostream>  // for cout/endl
@@ -55,6 +55,9 @@ class App{
     bool initialised;
     // color vars
     Color appFrameBackground;
+
+    // stage var
+    AppStage *appStage;
 
     // constructor
     App();

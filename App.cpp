@@ -40,10 +40,13 @@ App::App(){
     appFrameBackground = DEFAULT_FRAME_BG;
     // set initialisation bool to false
     initialised = false;
+    // setup app stage
+    appStage = new AppStage(appWidth,appHeight);
 }
 // define our destructor
 App::~App(){
     //TODO
+    delete appStage;
 }
 
 // define getters
@@ -121,6 +124,7 @@ void App::reinitialise(){
     updateFramerate(DEFAULT_FRAMERATE);
     updateTitle(DEFAULT_TITLE);
     // TODO: modify children to default
+    appStage = new AppStage(appWidth,appHeight);
 }
 
 /**
@@ -137,7 +141,10 @@ void App::cleanup(){
  */
 void App::paint(){
     ClearBackground(appFrameBackground);
-    //TODO: handle the rest of the painting here
+    // check our appStage is ready for painting
+    if(appStage && appStage!=nullptr)
+        // hand off for painting
+        appStage->paint();
 }
 
 /**
