@@ -1,3 +1,13 @@
+/**
+ * @file App.cpp
+ * @author Corbeau (https://github.com/corbeau217)
+ * @brief this defines our raylib app
+ * @version 0.1
+ * @date 2022-06-14
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 
 // include our header
 #include "App.hpp"
