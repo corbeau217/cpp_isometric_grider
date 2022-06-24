@@ -16,7 +16,7 @@
 
 
 // constructor
-IsoCell::IsoCell(Vector2 loc_in, int col_in, int row_in, float size_in, bool drawOutline_in) : 
+__CLASSNAME__::__CLASSNAME__(Vector2 loc_in, int col_in, int row_in, float size_in, bool drawOutline_in) : 
 // setup our ui placement
 uiLoc {loc_in},
 // setup location indicies
@@ -32,13 +32,13 @@ drawOutline {drawOutline_in}
 }
 
 // destructor
-IsoCell::~IsoCell(){
+__CLASSNAME__::~__CLASSNAME__(){
     //TODO
 }
 
 
 // paint member function
-void IsoCell::paint(){
+void __CLASSNAME__::paint(){
     //TODO
     if(ISOCELL_DRAWASBOXES)
         DrawRectangleV(uiLoc, Vector2{cellSize,cellSize}, BLUE);
@@ -63,13 +63,13 @@ void IsoCell::paint(){
 
 
 // location getter
-Vector2 IsoCell::getLoc(){
+Vector2 __CLASSNAME__::getLoc(){
     //TODO
     return Vector2{0.0f, 0.0f};
 }
 
 // if a location is contained in this cell
-bool IsoCell::contains(Vector2 loc_in){
+bool __CLASSNAME__::contains(Vector2 loc_in){
     //TODO
     return false;
 }

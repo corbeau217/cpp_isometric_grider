@@ -15,14 +15,18 @@
 #define __CLASSNAME__ IsoGrid
 
 // constructor
-__CLASSNAME__::__CLASSNAME__(Vector2 loc_in, int cols_in, int rows_in, float cellSize_in, Vector2 dimensions_in, bool paintCellOutline_in) :
+__CLASSNAME__::__CLASSNAME__(Vector2 loc_in, Vector2 dimensions_in, float cellSize_in, bool paintCellOutline_in) :
 // store our ui position
 gridLoc {loc_in},
-// store our dimensions
-cols {cols_in}, rows {rows_in},
+// stor our ui dimensions
+dimensions {dimensions_in},
 // setup our cell size
 cellSize {cellSize_in}
 {
+    // we should calculate the size here
+    // then we have our cols/rows vars that we work with
+    cols = {ISOGRID_DEFAULT_COLS};
+    rows = {ISOGRID_DEFAULT_ROWS};
     // setup our cell array
     cells = new IsoCell**[cols];
     // loop through each column and add the rows

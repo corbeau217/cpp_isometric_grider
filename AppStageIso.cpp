@@ -16,12 +16,14 @@
 #define __CLASSNAME__ AppStageIso
 
 // constructor
-AppStageIso::AppStageIso(Vector2 dimensions_in) : 
+__CLASSNAME__::__CLASSNAME__(Vector2 dimensions_in) : 
 // initialise cell size
 cellSize {APPSTAGE_DEFAULT_CELLSIZE}
 {
     // initialise dimensions
     dimensions = {dimensions_in};
+    // calculate the grid dimensions
+    Vector2 gridDimensions = {dimensions.x, dimensions.y};
     // get our offsets
     float xOffset = {0.0f};
     float yOffset = {0.0f};
@@ -34,17 +36,17 @@ cellSize {APPSTAGE_DEFAULT_CELLSIZE}
     gridLoc = {Vector2{0.0f + xOffset, 0.0f + yOffset}};
     
     // setup grid
-    grid = make_unique<IsoGrid>(gridLoc, 10, 10, cellSize, dimensions, APPSTAGE_DEFAULT_PAINTCELLOUTLINE);
+    grid = make_unique<IsoGrid>(gridLoc, gridDimensions, cellSize, APPSTAGE_DEFAULT_PAINTCELLOUTLINE);
 }
 
 // destructor
-AppStageIso::~AppStageIso(){
+__CLASSNAME__::~__CLASSNAME__(){
     //TODO
 }
 
 
 // paint member function
-void AppStageIso::paint(){
+void __CLASSNAME__::paint(){
     // hand off to grid
     grid->paint();
 }

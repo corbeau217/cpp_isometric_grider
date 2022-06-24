@@ -34,6 +34,8 @@ class IsoGrid {
     public:
     // draw from location
     Vector2 gridLoc;
+    // draw dimensions
+    Vector2 dimensions;
 
     // counts
     int cols;
@@ -50,7 +52,7 @@ class IsoGrid {
 
 
     // constructor
-    IsoGrid(Vector2 loc_in, int cols_in, int rows_in, float cellSize_in, Vector2 dimensions_in, bool paintCellOutline_in);
+    IsoGrid(Vector2 loc_in, Vector2 dimensions_in, float cellSize_in, bool paintCellOutline_in);
 
     // destructor
     ~IsoGrid();
