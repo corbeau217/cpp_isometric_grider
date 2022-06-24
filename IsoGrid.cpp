@@ -58,6 +58,8 @@ Vector2 __CLASSNAME__::generateCellLocationByIndex(int xIdx, int yIdx){
     //      and top of ui dimensions
     Vector2 offset = {
             gridLoc.x,
+            // this needs to be half of possibleRows*cellSize, then half
+            //      again so we're only moving up by half
             gridLoc.y-possibleRows(dimensions,cellSize)*cellSize/4
         };
     
