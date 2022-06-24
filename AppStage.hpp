@@ -43,7 +43,7 @@ class AppStage{
      * @brief handles painting the frame of app stage
      * 
      */
-    virtual void paint();
+    virtual void paint()=0;
 
     /**
      * @brief Get the desired title from our AppStage instance

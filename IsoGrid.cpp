@@ -34,6 +34,7 @@ cellSize {cellSize_in}
             cells[x][y] = new IsoCell(currCellPos, x, y, cellSize, paintCellOutline_in);
         }
     }
+    cout << "Done building IsoGrid constructor" << endl;
 }
 
 // destructor
@@ -68,5 +69,5 @@ Vector2 IsoGrid::cellLocationByIndex(int xIdx, int yIdx){
     //      https://www.youtube.com/watch?v=04oQ2jOUjkU
     float xLoc = xIdx*( 0.5f*cellSize) + yIdx*(-0.5f*cellSize);
     float yLoc = xIdx*(0.25f*cellSize) + yIdx*(0.25f*cellSize);
-    return Vector2(xLoc, yLoc);
+    return Vector2(gridLoc.x+xLoc, gridLoc.y+yLoc);
 }

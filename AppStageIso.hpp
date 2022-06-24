@@ -16,6 +16,8 @@
 // include our grid class
 #include "IsoGrid.hpp"
 
+#define APPSTAGEISO_OFFSET_GRID_BOOL true
+
 class AppStageIso : public AppStage {
     public:
     // grid params

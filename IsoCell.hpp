@@ -19,6 +19,13 @@
 // project includes
 
 
+#define ISOCELL_DEFAULT_FILLCOLOR WHITE
+
+#define ISOCELL_DRAWWITHLINES true
+#define ISOCELL_DRAWASBOXES false
+
+
+
 class IsoCell {
     public:
     // where in the ui this is drawn from

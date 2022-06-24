@@ -20,8 +20,16 @@ cellSize {APPSTAGE_DEFAULT_CELLSIZE}
 {
     // initialise dimensions
     dimensions = {dimensions_in};
+    // get our offsets
+    float xOffset = {0.0f};
+    float yOffset = {0.0f};
+    // add in the offset amounts
+    if(APPSTAGEISO_OFFSET_GRID_BOOL){
+        xOffset += dimensions.x/2.0f;
+        yOffset += dimensions.y/2.0f;
+    }
     // initialise location of grid
-    gridLoc = {Vector2(dimensions.x/2.0f, dimensions.y/2.0f)};
+    gridLoc = {Vector2(0.0f + xOffset, 0.0f + yOffset)};
     
     // setup grid
     grid = make_unique<IsoGrid>(gridLoc, 10, 10, cellSize, APPSTAGE_DEFAULT_PAINTCELLOUTLINE);
