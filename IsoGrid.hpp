@@ -24,7 +24,12 @@ using namespace std;
 
 // post/pre processor stuff here
 
-// IsoGrid class
+/**
+ * @brief isometric grid class that handles the grid?
+ * 
+ * drawn from the centre using gridLoc as the centre
+ * 
+ */
 class IsoGrid {
     public:
     // draw from location
@@ -45,10 +50,15 @@ class IsoGrid {
 
 
     // constructor
-    IsoGrid(Vector2 loc_in, int cols_in, int rows_in, float cellSize_in, bool paintCellOutline_in);
+    IsoGrid(Vector2 loc_in, int cols_in, int rows_in, float cellSize_in, Vector2 dimensions_in, bool paintCellOutline_in);
 
     // destructor
     ~IsoGrid();
+
+    // constuctor helper member functions
+
+    // for converting cell indicies to placement
+    Vector2 cellLocationByIndex(int xIdx, int yIdx);
 
 
     // paint function
@@ -60,8 +70,4 @@ class IsoGrid {
 
     // cell get by ui position
     IsoCell *get(Vector2 pos);
-
-
-    // for converting cell indicies to placement
-    Vector2 cellLocationByIndex(int xIdx, int yIdx);
 };

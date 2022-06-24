@@ -12,7 +12,7 @@
 #include "IsoGrid.hpp"
 
 // constructor
-IsoGrid::IsoGrid(Vector2 loc_in, int cols_in, int rows_in, float cellSize_in, bool paintCellOutline_in) :
+IsoGrid::IsoGrid(Vector2 loc_in, int cols_in, int rows_in, float cellSize_in, Vector2 dimensions_in, bool paintCellOutline_in) :
 // store our ui position
 gridLoc {loc_in},
 // store our dimensions
@@ -43,6 +43,22 @@ IsoGrid::~IsoGrid(){
 }
 
 
+// for converting cell indicies to placement
+Vector2 IsoGrid::cellLocationByIndex(int xIdx, int yIdx){
+    // this offset vector is calculated based off the grid location
+    Vector2 offset = {gridLoc.x, gridLoc.y};
+    
+    // this borrows from:
+    //      https://www.youtube.com/watch?v=04oQ2jOUjkU
+    float xLoc = xIdx*( 0.5f*cellSize) + yIdx*(-0.5f*cellSize);
+    float yLoc = xIdx*(0.25f*cellSize) + yIdx*(0.25f*cellSize);
+
+    // return adding our offset vector
+    return Vector2{xLoc + offset.x, yLoc + offset.y};
+}
+
+
+// paint member function
 void IsoGrid::paint(){
     for(int x = 0; x < cols; x++)
         for(int y = 0; y < rows; y++)
@@ -60,14 +76,4 @@ IsoCell *IsoGrid::get(int xIdx, int yIdx){
 IsoCell *IsoGrid::get(Vector2 pos){
     //TODO
     return nullptr;
-}
-
-
-// for converting cell indicies to placement
-Vector2 IsoGrid::cellLocationByIndex(int xIdx, int yIdx){
-    // this borrows from:
-    //      https://www.youtube.com/watch?v=04oQ2jOUjkU
-    float xLoc = xIdx*( 0.5f*cellSize) + yIdx*(-0.5f*cellSize);
-    float yLoc = xIdx*(0.25f*cellSize) + yIdx*(0.25f*cellSize);
-    return Vector2(gridLoc.x+xLoc, gridLoc.y+yLoc);
 }

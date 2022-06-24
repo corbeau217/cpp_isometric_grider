@@ -26,6 +26,12 @@
 
 using namespace std;
 
+/**
+ * @brief AppStage base class
+ * 
+ * this is used by the App class and handles the Applet's delegation
+ * 
+ */
 class AppStage{
     public:
     // dimensions

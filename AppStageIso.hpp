@@ -18,6 +18,10 @@
 
 #define APPSTAGEISO_OFFSET_GRID_BOOL true
 
+/**
+ * @brief derivative class of AppStage handling the isometric grid
+ * 
+ */
 class AppStageIso : public AppStage {
     public:
     // grid params

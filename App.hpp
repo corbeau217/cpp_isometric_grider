@@ -28,7 +28,9 @@ using namespace std;
 
 // definitions
 #define DEFAULT_WIDTH 1024
+#define DEFAULT_WIDTH_FLOAT 1024.0f
 #define DEFAULT_HEIGHT 720
+#define DEFAULT_HEIGHT_FLOAT 720.0f
 #define DEFAULT_FRAMERATE 15
 #define DEFAULT_TITLE "C++ perlin noise grid project"
 // how many frames after a refresh before we can do another
@@ -39,6 +41,12 @@ using namespace std;
 #define DEFAULT_FRAME_BG GRAY
 
 
+/**
+ * @brief class handling the raylib app itself
+ * 
+ * delegates out to the AppStage instance per App instance
+ * 
+ */
 class App{
     public:
     // ----------------------------------------
@@ -53,6 +61,7 @@ class App{
     // dimension variables
     int appWidth;
     int appHeight;
+    Vector2 appDimensions;
     // framerate var
     int appFramerate;
     // window title

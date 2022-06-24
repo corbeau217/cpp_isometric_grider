@@ -29,10 +29,10 @@ cellSize {APPSTAGE_DEFAULT_CELLSIZE}
         yOffset += dimensions.y/2.0f;
     }
     // initialise location of grid
-    gridLoc = {Vector2(0.0f + xOffset, 0.0f + yOffset)};
+    gridLoc = {Vector2{0.0f + xOffset, 0.0f + yOffset}};
     
     // setup grid
-    grid = make_unique<IsoGrid>(gridLoc, 10, 10, cellSize, APPSTAGE_DEFAULT_PAINTCELLOUTLINE);
+    grid = make_unique<IsoGrid>(gridLoc, 10, 10, cellSize, dimensions, APPSTAGE_DEFAULT_PAINTCELLOUTLINE);
 }
 
 // destructor

@@ -38,7 +38,7 @@ IsoCell::~IsoCell(){
 void IsoCell::paint(){
     //TODO
     if(ISOCELL_DRAWASBOXES)
-        DrawRectangleV(uiLoc, Vector2(cellSize,cellSize), BLUE);
+        DrawRectangleV(uiLoc, Vector2{cellSize,cellSize}, BLUE);
     // this needs to be fixed
     if(ISOCELL_DRAWWITHLINES){
         // parts
@@ -49,10 +49,10 @@ void IsoCell::paint(){
         // initialise points array
         Vector2 *points = new Vector2[pointCount];
         // set our points
-        points[0] = {Vector2(uiLoc.x           , uiLoc.y           )};
-        points[1] = {Vector2(uiLoc.x + halfSize, uiLoc.y + quarSize)};
-        points[2] = {Vector2(uiLoc.x           , uiLoc.y + halfSize)};
-        points[3] = {Vector2(uiLoc.x - halfSize, uiLoc.y + quarSize)};
+        points[0] = {Vector2{uiLoc.x           , uiLoc.y           }};
+        points[1] = {Vector2{uiLoc.x + halfSize, uiLoc.y + quarSize}};
+        points[2] = {Vector2{uiLoc.x           , uiLoc.y + halfSize}};
+        points[3] = {Vector2{uiLoc.x - halfSize, uiLoc.y + quarSize}};
         // draw them
         DrawLineStrip(points, pointCount, BLACK);
     }
@@ -62,7 +62,7 @@ void IsoCell::paint(){
 // location getter
 Vector2 IsoCell::getLoc(){
     //TODO
-    return Vector2(0.0f, 0.0f);
+    return Vector2{0.0f, 0.0f};
 }
 
 // if a location is contained in this cell

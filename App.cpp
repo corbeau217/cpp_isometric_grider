@@ -15,6 +15,7 @@
 
 // so the preprocessor will handle filling in what AppStage we use
 #define APPSTAGE_TYPE AppStageIso
+#define APPSTAGE_PARAMS Vector2{appDimensions}
 
 // ----------------------------------------
 // define static members
@@ -34,6 +35,7 @@ App::App() :
 // we gotta do these in order of their declaration from the header
 // setup dimensions
 appWidth{DEFAULT_WIDTH}, appHeight {DEFAULT_HEIGHT},
+appDimensions{DEFAULT_WIDTH_FLOAT, DEFAULT_HEIGHT_FLOAT},
 // setup framerate
 appFramerate {DEFAULT_FRAMERATE},
 // setup default title
@@ -44,7 +46,7 @@ initialised {false},
 appFrameBackground {DEFAULT_FRAME_BG}
 {
     // setup app stage
-    appStage = make_unique<APPSTAGE_TYPE>(Vector2(appWidth,appHeight));
+    appStage = make_unique<APPSTAGE_TYPE>(APPSTAGE_PARAMS);
     this->updateTitle(appStage->getDesiredTitle());
     
     // setup our vars for refreshing
@@ -134,7 +136,7 @@ void App::reinitialise(){
     updateFramerate(DEFAULT_FRAMERATE);
     updateTitle(DEFAULT_TITLE);
     // TODO: modify children to default
-    appStage = make_unique<APPSTAGE_TYPE>(Vector2(appWidth,appHeight));
+    appStage = make_unique<APPSTAGE_TYPE>(APPSTAGE_PARAMS);
 }
 
 /**

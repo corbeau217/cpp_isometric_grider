@@ -1,7 +1,7 @@
 /**
  * @file Main.cpp
  * @author Corbeau (https://github.com/corbeau217)
- * @brief 
+ * @brief main landing point for our program
  * @version 0.1
  * @date 2022-06-24
  * 

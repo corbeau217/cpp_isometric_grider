@@ -25,7 +25,12 @@
 #define ISOCELL_DRAWASBOXES false
 
 
-
+/**
+ * @brief container for the isometric cells
+ * 
+ * draw from centre, using uiLoc as the centre
+ * 
+ */
 class IsoCell {
     public:
     // where in the ui this is drawn from
