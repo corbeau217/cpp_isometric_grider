@@ -23,6 +23,9 @@
 using namespace std;
 
 // post/pre processor stuff here
+#define ISOGRID_DEFAULT_COLS 10
+#define ISOGRID_DEFAULT_ROWS 10
+#define ISOGRID_CALCULATE_COLSANDROWS true
 
 /**
  * @brief isometric grid class that handles the grid?
@@ -60,7 +63,7 @@ class IsoGrid {
     // constuctor helper member functions
 
     // for converting cell indicies to placement
-    Vector2 cellLocationByIndex(int xIdx, int yIdx);
+    Vector2 generateCellLocationByIndex(int xIdx, int yIdx);
 
 
     // paint function
@@ -75,4 +78,12 @@ class IsoGrid {
 
     // check if this location is valid by index
     bool validLocation(int xIdx, int yIdx);
+
+    // generate Vector2 for top-left
+    Vector2 topLeftV();
+
+    // for calculating the possible rows that fit predetermined circumstances
+    static int possibleRows(Vector2 uiDimensions_in, float cellSize_in);
+    // for calculating the possible cols that fit predetermined circumstances
+    static int possibleCols(Vector2 uiDimensions_in, float cellSize_in);
 };
