@@ -6,4 +6,4 @@
     to  better update this
 
 ## screenshots:
-    ![as at commit b1552aa Jun 24, 2022](./lib/screenshot24062022.png "screenshot")
+    ![as at commit b1552aa Jun 24, 2022](https://github.com/corbeau217/cpp_isometric_grider/blob/main/lib/screenshot24062022.png "screenshot")
