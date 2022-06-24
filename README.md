@@ -6,4 +6,4 @@
     to  better update this
 
 ## screenshots:
-    [as at commit b1552aa Jun 24, 2022](https://cdn.discordapp.com/attachments/985880979795218542/989823562791649340/screenshot24062022.png "screenshot")
+    ![as at commit b1552aa Jun 24, 2022](https://cdn.discordapp.com/attachments/985880979795218542/989823562791649340/screenshot24062022.png "screenshot")
