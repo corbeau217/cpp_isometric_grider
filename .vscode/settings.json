@@ -7,6 +7,8 @@
 		"**/.DS_Store": true,
 		"**/*.o": true,
 		"**/*.exe": true,
+		"**/*.md": true,
+		"**/lib/**": true,
 	},
 	"files.associations": {
 		"*.ejs": "html",
