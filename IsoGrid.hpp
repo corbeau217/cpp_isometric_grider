@@ -70,4 +70,7 @@ class IsoGrid {
 
     // cell get by ui position
     IsoCell *get(Vector2 pos);
+
+    // check if this location is valid by index
+    bool validLocation(int xIdx, int yIdx);
 };

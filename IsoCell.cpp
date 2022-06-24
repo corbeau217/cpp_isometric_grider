@@ -11,6 +11,9 @@
 // include our header
 #include "IsoCell.hpp"
 
+// define the current class preprocessor variable
+#define __CLASSNAME__ IsoCell
+
 
 // constructor
 IsoCell::IsoCell(Vector2 loc_in, int col_in, int row_in, float size_in, bool drawOutline_in) : 
@@ -70,3 +73,7 @@ bool IsoCell::contains(Vector2 loc_in){
     //TODO
     return false;
 }
+
+
+// undefine the current class preprocessor variable
+#undef __CLASSNAME__

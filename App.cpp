@@ -13,6 +13,9 @@
 #include "App.hpp"
 #include "AppStageIso.hpp"
 
+// define the current class preprocessor variable
+#define __CLASSNAME__ App
+
 // so the preprocessor will handle filling in what AppStage we use
 #define APPSTAGE_TYPE AppStageIso
 #define APPSTAGE_PARAMS Vector2{appDimensions}
@@ -20,18 +23,18 @@
 // ----------------------------------------
 // define static members
 
-unique_ptr<App> App::app = make_unique<App>();
+unique_ptr<App> __CLASSNAME__::app = make_unique<App>();
 
-void App::start(){
+void __CLASSNAME__::start(){
     cout << "[running]: App::start()" << endl;
-    App::app->run();
+    __CLASSNAME__::app->run();
 }
 
 // ----------------------------------------
 // define instance members
 
 // define our constructor
-App::App() :
+__CLASSNAME__::__CLASSNAME__() :
 // we gotta do these in order of their declaration from the header
 // setup dimensions
 appWidth{DEFAULT_WIDTH}, appHeight {DEFAULT_HEIGHT},
@@ -53,23 +56,23 @@ appFrameBackground {DEFAULT_FRAME_BG}
     framesUntilRefreshCooldown = {0};
 }
 // define our destructor
-App::~App(){
+__CLASSNAME__::~__CLASSNAME__(){
     //TODO
     // delete appStage;
 }
 
 // define getters
 
-int App::getWidth(){
+int __CLASSNAME__::getWidth(){
     return appWidth;
 }
-int App::getHeight(){
+int __CLASSNAME__::getHeight(){
     return appHeight;
 }
-int App::getFramerate(){
+int __CLASSNAME__::getFramerate(){
     return appFramerate;
 }
-string App::getTitle(){
+string __CLASSNAME__::getTitle(){
     return appTitle;
 }
 
@@ -79,7 +82,7 @@ string App::getTitle(){
  * @brief change the apps title
  * 
  */
-void App::updateTitle(string newTitle){
+void __CLASSNAME__::updateTitle(string newTitle){
     appTitle = newTitle;
     if(initialised)
         SetWindowTitle(newTitle.c_str());
@@ -89,7 +92,7 @@ void App::updateTitle(string newTitle){
  * @brief updates app dimensions
  * 
  */
-void App::updateDimensions(int newWidth, int newHeight){
+void __CLASSNAME__::updateDimensions(int newWidth, int newHeight){
     appWidth = newWidth;
     appHeight = newHeight;
     // check if window initialised
@@ -102,7 +105,7 @@ void App::updateDimensions(int newWidth, int newHeight){
  * @brief update our app framerate
  * 
  */
-void App::updateFramerate(int newFramerate){
+void __CLASSNAME__::updateFramerate(int newFramerate){
     appFramerate = newFramerate;
     if(initialised)
         SetTargetFPS(newFramerate);
@@ -112,7 +115,7 @@ void App::updateFramerate(int newFramerate){
  * @brief generate the app
  * 
  */
-void App::initialise(){
+void __CLASSNAME__::initialise(){
     if(!initialised){
         InitWindow( getWidth(), getHeight(), getTitle().c_str());
         SetTargetFPS( getFramerate() );
@@ -127,7 +130,7 @@ void App::initialise(){
  *      already running
  * 
  */
-void App::reinitialise(){
+void __CLASSNAME__::reinitialise(){
     // start our cooldown variable
     framesUntilRefreshCooldown = REFRESH_FRAME_COOLDOWN;
 
@@ -143,7 +146,7 @@ void App::reinitialise(){
  * @brief anything needed to be done when the app is closed
  * 
  */
-void App::cleanup(){
+void __CLASSNAME__::cleanup(){
     //TODO
 }
 
@@ -151,7 +154,7 @@ void App::cleanup(){
  * @brief paint single frame
  * 
  */
-void App::paint(){
+void __CLASSNAME__::paint(){
     // code for handling refreshing the grid
     if(desireRefresh())
         reinitialise();
@@ -171,7 +174,7 @@ void App::paint(){
  * @brief this is called to run a created App instance
  * 
  */
-void App::run(){
+void __CLASSNAME__::run(){
     // check if initialised
     if(!initialised)
         initialise();
@@ -193,7 +196,7 @@ void App::run(){
  * @return true : APP_REFRESH_KEY down and not cooldown
  * @return false : otherwise
  */
-bool App::desireRefresh(){
+bool __CLASSNAME__::desireRefresh(){
     // check if cooldown
     if(framesUntilRefreshCooldown > 0)
         return false;
@@ -207,7 +210,11 @@ bool App::desireRefresh(){
 }
 
 // handles ticking down the refresh cooldown
-void App::tickRefreshCooldown(){
+void __CLASSNAME__::tickRefreshCooldown(){
     if(framesUntilRefreshCooldown > 0)
         --framesUntilRefreshCooldown;
 }
+
+
+// undefine the current class preprocessor variable
+#undef __CLASSNAME__

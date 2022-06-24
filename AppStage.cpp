@@ -11,8 +11,11 @@
 
 #include "AppStage.hpp"
 
+// define the current class preprocessor variable
+#define __CLASSNAME__ AppStage
+
 // constructor
-AppStage::AppStage() :
+__CLASSNAME__::__CLASSNAME__() :
 // initialise title
 title {APPSTAGE_DEFAULT_TITLE}
 {
@@ -23,7 +26,7 @@ title {APPSTAGE_DEFAULT_TITLE}
     //  define a default constructor for the base class
 }
 // destructor
-AppStage::~AppStage(){
+__CLASSNAME__::~__CLASSNAME__(){
     //TODO
 }
 
@@ -31,6 +34,10 @@ AppStage::~AppStage(){
  * @brief handles painting the frame of app stage
  * 
  */
-void AppStage::paint(){
+void __CLASSNAME__::paint(){
     //TODO
 }
+
+
+// undefine the current class preprocessor variable
+#undef __CLASSNAME__

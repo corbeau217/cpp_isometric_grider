@@ -12,6 +12,8 @@
 // include our header
 #include "AppStageIso.hpp"
 
+// define the current class preprocessor variable
+#define __CLASSNAME__ AppStageIso
 
 // constructor
 AppStageIso::AppStageIso(Vector2 dimensions_in) : 
@@ -46,3 +48,7 @@ void AppStageIso::paint(){
     // hand off to grid
     grid->paint();
 }
+
+
+// undefine the current class preprocessor variable
+#undef __CLASSNAME__
