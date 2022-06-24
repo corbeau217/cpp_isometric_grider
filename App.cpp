@@ -13,7 +13,7 @@
 #include "App.hpp"
 
 // so the preprocessor will handle filling in what AppStage we use
-#define APPSTAGE_TYPE AppStageTerrain
+#define APPSTAGE_TYPE AppStage
 
 // ----------------------------------------
 // define static members
