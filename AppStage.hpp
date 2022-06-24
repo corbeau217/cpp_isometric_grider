@@ -19,18 +19,17 @@
 //      make_unique work on windows
 #include <memory>
 
-#define DEFAULT_APPSTAGE_TITLE "App"
-#define DEFAULT_MARGIN 10
-#define DEFAULT_CELLSIZE 20
-#define DEFAULT_PAINT_CELL_OUTLINE false
+#define APPSTAGE_DEFAULT_TITLE "App"
+#define APPSTAGE_DEFAULT_MARGIN 10
+#define APPSTAGE_DEFAULT_CELLSIZE 20.0f
+#define APPSTAGE_DEFAULT_PAINTCELLOUTLINE false
 
 using namespace std;
 
 class AppStage{
     public:
-    // dimension variables
-    int width;
-    int height;
+    // dimensions
+    Vector2 dimensions;
     // title var
     string title;
     
@@ -44,7 +43,7 @@ class AppStage{
      * @brief handles painting the frame of app stage
      * 
      */
-    virtual void paint()=0;
+    virtual void paint();
 
     /**
      * @brief Get the desired title from our AppStage instance
@@ -53,9 +52,7 @@ class AppStage{
      * 
      */
     string getDesiredTitle(){
-        if(title.length() > 0)
-            return title;
-        return DEFAULT_APPSTAGE_TITLE;
+        return title;
     }
 };
 

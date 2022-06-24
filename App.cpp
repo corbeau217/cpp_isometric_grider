@@ -3,7 +3,7 @@
  * @author Corbeau (https://github.com/corbeau217)
  * @brief this defines our raylib app
  * @version 0.1
- * @date 2022-06-14
+ * @date 2022-06-24
  * 
  * @copyright Copyright (c) 2022
  * 
@@ -11,9 +11,10 @@
 
 // include our header
 #include "App.hpp"
+#include "AppStageIso.hpp"
 
 // so the preprocessor will handle filling in what AppStage we use
-#define APPSTAGE_TYPE AppStage
+#define APPSTAGE_TYPE AppStageIso
 
 // ----------------------------------------
 // define static members
@@ -43,7 +44,7 @@ initialised {false},
 appFrameBackground {DEFAULT_FRAME_BG}
 {
     // setup app stage
-    appStage = make_unique<APPSTAGE_TYPE>(appWidth,appHeight);
+    appStage = make_unique<APPSTAGE_TYPE>(Vector2(appWidth,appHeight));
     this->updateTitle(appStage->getDesiredTitle());
     
     // setup our vars for refreshing
@@ -133,7 +134,7 @@ void App::reinitialise(){
     updateFramerate(DEFAULT_FRAMERATE);
     updateTitle(DEFAULT_TITLE);
     // TODO: modify children to default
-    appStage = make_unique<APPSTAGE_TYPE>(appWidth,appHeight);
+    appStage = make_unique<APPSTAGE_TYPE>(Vector2(appWidth,appHeight));
 }
 
 /**
