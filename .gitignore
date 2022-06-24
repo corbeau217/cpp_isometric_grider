@@ -1,4 +1,10 @@
-*.exe
-*.dsym
-*.log
-main
+*
+
+!**.json
+!**.cpp
+!**.hpp
+!**.c
+!**.h
+!Makefile
+!main.code-workspace
+!**.dll

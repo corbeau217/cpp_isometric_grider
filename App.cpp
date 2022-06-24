@@ -12,15 +12,16 @@
 // include our header
 #include "App.hpp"
 
+// so the preprocessor will handle filling in what AppStage we use
+#define APPSTAGE_TYPE AppStageTerrain
 
 // ----------------------------------------
 // define static members
 
-App *App::app = nullptr;
+unique_ptr<App> App::app = make_unique<App>();
 
 void App::start(){
     cout << "[running]: App::start()" << endl;
-    App::app = new App();
     App::app->run();
 }
 
@@ -28,25 +29,30 @@ void App::start(){
 // define instance members
 
 // define our constructor
-App::App(){
-    // setup dimensions
-    appWidth = DEFAULT_WIDTH;
-    appHeight = DEFAULT_HEIGHT;
-    // setup framerate
-    appFramerate = DEFAULT_FRAMERATE;
-    // setup default title
-    appTitle = DEFAULT_TITLE;
-    // setup default background color
-    appFrameBackground = DEFAULT_FRAME_BG;
-    // set initialisation bool to false
-    initialised = false;
+App::App() :
+// we gotta do these in order of their declaration from the header
+// setup dimensions
+appWidth{DEFAULT_WIDTH}, appHeight {DEFAULT_HEIGHT},
+// setup framerate
+appFramerate {DEFAULT_FRAMERATE},
+// setup default title
+appTitle {DEFAULT_TITLE},
+// set initialisation bool to false
+initialised {false},
+// setup default background color
+appFrameBackground {DEFAULT_FRAME_BG}
+{
     // setup app stage
-    appStage = new AppStage(appWidth,appHeight);
+    appStage = make_unique<APPSTAGE_TYPE>(appWidth,appHeight);
+    this->updateTitle(appStage->getDesiredTitle());
+    
+    // setup our vars for refreshing
+    framesUntilRefreshCooldown = {0};
 }
 // define our destructor
 App::~App(){
     //TODO
-    delete appStage;
+    // delete appStage;
 }
 
 // define getters
@@ -119,12 +125,15 @@ void App::initialise(){
  * 
  */
 void App::reinitialise(){
+    // start our cooldown variable
+    framesUntilRefreshCooldown = REFRESH_FRAME_COOLDOWN;
+
     // change everything back to defaults
     updateDimensions(DEFAULT_WIDTH, DEFAULT_HEIGHT);
     updateFramerate(DEFAULT_FRAMERATE);
     updateTitle(DEFAULT_TITLE);
     // TODO: modify children to default
-    appStage = new AppStage(appWidth,appHeight);
+    appStage = make_unique<APPSTAGE_TYPE>(appWidth,appHeight);
 }
 
 /**
@@ -140,11 +149,19 @@ void App::cleanup(){
  * 
  */
 void App::paint(){
+    // code for handling refreshing the grid
+    if(desireRefresh())
+        reinitialise();
+    
+    // continue as normal
     ClearBackground(appFrameBackground);
     // check our appStage is ready for painting
-    if(appStage && appStage!=nullptr)
+    // if(appStage)
         // hand off for painting
-        appStage->paint();
+    appStage->paint();
+
+    // done paint frame, tick refresh cooldown
+    tickRefreshCooldown();
 }
 
 /**
@@ -165,4 +182,29 @@ void App::run(){
 
     // cleanup the app
     cleanup();
+}
+
+/**
+ * @brief checks if we should refresh
+ * 
+ * @return true : APP_REFRESH_KEY down and not cooldown
+ * @return false : otherwise
+ */
+bool App::desireRefresh(){
+    // check if cooldown
+    if(framesUntilRefreshCooldown > 0)
+        return false;
+    
+    // check if key down
+    if(IsKeyDown(APP_REFRESH_KEY))
+        return true;
+    
+    // otherwise
+    return false;
+}
+
+// handles ticking down the refresh cooldown
+void App::tickRefreshCooldown(){
+    if(framesUntilRefreshCooldown > 0)
+        --framesUntilRefreshCooldown;
 }

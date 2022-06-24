@@ -10,26 +10,52 @@
  */
 
 // header guard to prevent redefining
-#ifndef APPSTAGE_HPP
-#define APPSTAGE_HPP
+#pragma once
+
+#include <iostream>  // for cout/endl/unique_ptr/make_unique
+#include <string>  // so we can use strings
+#include "raylib.h"  // since we need this to paint
+// we need this so the unique_ptr and
+//      make_unique work on windows
+#include <memory>
+
+#define DEFAULT_APPSTAGE_TITLE "App"
+#define DEFAULT_MARGIN 10
+#define DEFAULT_CELLSIZE 20
+#define DEFAULT_PAINT_CELL_OUTLINE false
+
+using namespace std;
 
 class AppStage{
     public:
     // dimension variables
     int width;
     int height;
-
-
+    // title var
+    string title;
+    
     // constructor
-    AppStage(int width_in, int height_in);
+    AppStage();
     // destructor
-    ~AppStage();
+    virtual ~AppStage();
+
 
     /**
      * @brief handles painting the frame of app stage
      * 
      */
-    void paint();
+    virtual void paint()=0;
+
+    /**
+     * @brief Get the desired title from our AppStage instance
+     * 
+     * (this should be set during constructors)
+     * 
+     */
+    string getDesiredTitle(){
+        if(title.length() > 0)
+            return title;
+        return DEFAULT_APPSTAGE_TITLE;
+    }
 };
 
-#endif
