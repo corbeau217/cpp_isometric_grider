@@ -75,25 +75,28 @@ class __CLASSNAME__ {
 
 
     // paint function
-    void paint();
+    virtual void paint();
 
 
     // cell get by index
-    C *get(int xIdx, int yIdx);
+    virtual C *get(int xIdx, int yIdx);
 
     // cell get by ui position
-    C *get(Vector2 pos);
+    virtual C *get(Vector2 pos);
 
     // check if this location is valid by index
-    bool validLocation(int xIdx, int yIdx);
+    virtual bool validLocation(int xIdx, int yIdx);
 
     // generate Vector2 for top-left
-    Vector2 topLeftV();
+    virtual Vector2 topLeftV();
+
+    // for checking if a Vector2 is contained in the grid
+    virtual bool contains(Vector2 pos);
 
     // for calculating the possible rows that fit predetermined circumstances
-    static int possibleRows(Vector2 uiDimensions_in, float cellDiam_in);
+    virtual static int possibleRows(Vector2 uiDimensions_in, float cellDiam_in);
     // for calculating the possible cols that fit predetermined circumstances
-    static int possibleCols(Vector2 uiDimensions_in, float cellDiam_in);
+    virtual static int possibleCols(Vector2 uiDimensions_in, float cellDiam_in);
 };
 
 // undefine our current class name preprocessor var

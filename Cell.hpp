@@ -62,14 +62,14 @@ class __CLASSNAME__ {
 
 
     // paint member function
-    void paint();
+    virtual void paint();
 
 
     // location getter
-    Vector2 getLoc();
+    virtual Vector2 getLoc();
 
     // if a location is contained in this cell
-    bool contains(Vector2 loc_in);
+    virtual bool contains(Vector2 loc_in);
 
 };
 

@@ -7,3 +7,21 @@
 
 ## screenshots
 ![Screenshot](./lib/screenshot24062022.png "as at commit b1552aa Jun 24, 2022")
+
+
+
+### ideas
+
+- we should have a base class for ui elements
+    - vars:
+        - would hold ui location
+        - the orientation of that element
+            - as in an enum for top-left/centre etc
+        - the dimensions
+    - functions:
+        - paint
+        - contains
+        - setLoc
+        - getLoc
+        - setSize
+        - getSize
