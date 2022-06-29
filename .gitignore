@@ -1,5 +1,8 @@
 *
 
+!.gitignore
+!*/
+*.dSYM/
 !**.png
 !**.json
 !**.cpp
