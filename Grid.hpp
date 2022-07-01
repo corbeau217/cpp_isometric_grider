@@ -94,9 +94,9 @@ class __CLASSNAME__ {
     virtual bool contains(Vector2 pos);
 
     // for calculating the possible rows that fit predetermined circumstances
-    virtual static int possibleRows(Vector2 uiDimensions_in, float cellDiam_in);
+    virtual int possibleRows(Vector2 uiDimensions_in, float cellDiam_in);
     // for calculating the possible cols that fit predetermined circumstances
-    virtual static int possibleCols(Vector2 uiDimensions_in, float cellDiam_in);
+    virtual int possibleCols(Vector2 uiDimensions_in, float cellDiam_in);
 };
 
 // undefine our current class name preprocessor var

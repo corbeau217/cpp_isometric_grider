@@ -4,7 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "C:/raylib/raylib/src/**",
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/*/**"
             ],
             "defines": [
                 "_DEBUG",
@@ -21,7 +22,8 @@
         {
             "name": "Mac",
             "includePath": [
-                "${workspaceFolder}/**" /*,
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/*/**"/*,
                 "/opt/homebrew/include" */ // removing because it just errors
             ],
             "defines": [
@@ -43,7 +45,8 @@
             "name": "Linux",
             "includePath": [
                 "/home/linuxbrew/.linuxbrew/include",
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/*/**"
             ],
             "defines": [
                 "_DEBUG",
